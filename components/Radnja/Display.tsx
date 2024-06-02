@@ -166,7 +166,6 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
                 width={100}
                 height={100}
                 alt="Logo"
-                loading="lazy"
                 className="rounded-full border-4 border-white h-32 w-32 md:w-28 md:h-28"
               />
               <div className="flex flex-col text-white">
@@ -186,9 +185,8 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
               src={images[0] ? images[0] : dummy}
               alt="Slika"
               fill
-              loading="lazy"
               objectFit="cover"
-              className="opacity-40 rounded-b-xl md:rounded-xl backdrop-blur-sm"
+              className="opacity-40 rounded-b-xl md:rounded-xl"
             />
           </div>
           <div className="flex flex-col lg:hidden gap-2 mx-4 md:mx-0 mb-4">
