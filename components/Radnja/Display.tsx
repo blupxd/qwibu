@@ -161,13 +161,13 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
               <FaArrowLeft className="hover:text-blue-500" />
             </button>
             <div className="flex z-10 items-start absolute -bottom-6 left-4 gap-4">
-              {/* <Image
+              <Image
                 src={logo ? logo : dummy}
                 width={100}
                 height={100}
                 alt="Logo"
                 className="rounded-full border-4 border-white h-32 w-32 md:w-28 md:h-28"
-              /> */}
+              />
               <div className="flex flex-col text-white">
                 <h3 className="text-3xl sm:text-4xl md:text-3xl mt-6 md:mt-4 lg:mt-2 font-semibold">
                   {naziv}
