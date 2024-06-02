@@ -107,7 +107,7 @@ const Services: React.FC<Radnja> = ({ radnja }) => {
         </div>
       </div>
 
-      {/* <Info /> */}
+      <Info />
       {zakazi && (
         <div className="fixed z-50 top-0 right-0 left-0 bottom-0 bg-black/20">
           {radnja ? <Radnici setZakazi={setZakazi} radnja={radnja} /> : ''} 
