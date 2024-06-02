@@ -93,9 +93,9 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi,radnja }) => {
             </div>
           ))}
         </div>
-      ) : (
-        <Kalendar radnja={radnja}/>
-      )}
+      ) : 
+        radnja ? <Kalendar radnja={radnja}/> : "loading"
+      }
       <button
         className="absolute top-2 right-2 text-3xl md:text-xl text-gray-800"
         onClick={() => {
