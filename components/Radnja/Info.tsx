@@ -1,3 +1,4 @@
+"use client"
 import React, { useRef, useState } from "react";
 import dummy from "../../public/images/radnik.jpg";
 import Image from "next/image";
