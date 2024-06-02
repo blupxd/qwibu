@@ -241,15 +241,15 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
             </div>
           </div>
 
-          <Suspense fallback={<div>Loading...</div>}>
+          {/* <Suspense fallback={<div>Loading...</div>}>
             <Services radnja={radnja} />
-          </Suspense>
+          </Suspense> */}
         </div>
 
         <div className="col-span-5 md:col-span-2 lg:col-span-1 mt-12 mr-0 md:mr-4">
-          <Suspense fallback={<div>Loading...</div>}>
+          {/* <Suspense fallback={<div>Loading...</div>}>
             <Sidebar radnja={radnja} />
-          </Suspense>
+          </Suspense> */}
         </div>
       </div>
     </div>
