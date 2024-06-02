@@ -14,7 +14,7 @@ const Navbar: React.FC<SessionProp> = ({ session }) => {
       transition={{ duration: 0.2, ease: "easeInOut" }}
       className={`flex flex-col h-max-full fixed top-0 left-0 right-0 z-40 `}
     >
-      <div className="bg-white/10 backdrop-blur-md rounded-b-lg shadow-lg shadow-black/20">
+      <div className="bg-white backdrop-blur-md rounded-b-lg shadow-lg shadow-black/20">
         <div className="flex justify-between px-2 md:px-12 py-2">
           <div className="px-4 py-2 text-gray-800 text-lg font-bold">
             <Link href="/">Qwibu</Link>
