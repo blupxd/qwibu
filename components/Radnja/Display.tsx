@@ -101,7 +101,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
           </button>
         </div>
       )} */}
-      <div className="grid grid-cols-5 md:grid-cols-6 lg:grid-cols-5">
+      {/* <div className="grid grid-cols-5 md:grid-cols-6 lg:grid-cols-5">
         <div className="col-span-1 hidden lg:flex flex-col gap-4 md:p-6 lg:p-4 bg-gray-200">
           <Link
             href="/"
@@ -249,7 +249,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
             <Sidebar radnja={radnja} />
           </Suspense>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
