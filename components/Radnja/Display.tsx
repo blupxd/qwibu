@@ -157,7 +157,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
             </button>
             <div className="flex z-10 items-start absolute -bottom-6 left-4 gap-4">
               <Image
-                src={logo}
+                src={logo ? logo : dummy}
                 width={100}
                 height={100}
                 alt="Logo"
