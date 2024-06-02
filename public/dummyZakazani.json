@@ -1,0 +1,24 @@
+[
+    {
+      "ime": "Ana",
+      "prezime": "Anić",
+      "korisnickoIme": "@anaani",
+      "datumZakazan": "2024-05-07",
+      "vreme": "10:00"
+    },
+    {
+      "ime": "Marko",
+      "prezime": "Marković",
+      "korisnickoIme": "@marko93",
+      "datumZakazan": "2024-05-05",
+      "vreme": "15:30"
+    },
+    {
+      "ime": "Jelena",
+      "prezime": "Jelić",
+      "korisnickoIme": "@jeca77",
+      "datumZakazan": "2024-05-06",
+      "vreme": "14:00"
+    }
+  ]
+  

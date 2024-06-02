@@ -1,0 +1,28 @@
+[
+    {
+      "id": 1,
+      "naziv": "Sisanje",
+      "radnja": "BarBrothers"
+    },
+    {
+      "id": 2,
+      "naziv": "Manikir",
+      "radnja": "NailArtStudio"
+    },
+    {
+      "id": 3,
+      "naziv": "Pedicure",
+      "radnja": "NailArtStudio"
+    },
+    {
+      "id": 4,
+      "naziv": "Masaza",
+      "radnja": "SpaRelax"
+    },
+    {
+      "id": 5,
+      "naziv": "Depilacija",
+      "radnja": "BeautySalon"
+    }
+  ]
+  

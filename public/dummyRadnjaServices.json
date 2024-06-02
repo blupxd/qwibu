@@ -1,0 +1,32 @@
+[
+  {
+    "naziv": "Fade šišanje",
+    "cena": "1200 RSD",
+    "opis": "Moderan stil šišanja",
+    "trajanje": "20 min"
+  },
+  {
+    "naziv": "Obično šišanje",
+    "cena": "800 RSD",
+    "opis": "Klasično šišanje",
+    "trajanje": "20 min"
+  },
+  {
+    "naziv": "Farbanje kose",
+    "cena": "2000 RSD",
+    "opis": "Promena boje kose",
+    "trajanje": "20 min"
+  },
+  {
+    "naziv": "Šišanje i farbanje",
+    "cena": "2500 RSD",
+    "opis": "Kombinacija šišanja i farbanja",
+    "trajanje": "20 min"
+  },
+  {
+    "naziv": "Full tretman",
+    "cena": "3500 RSD",
+    "opis": "Potpuna nega i stilizovanje",
+    "trajanje": "20 min"
+  }
+]
