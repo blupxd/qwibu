@@ -1,6 +1,5 @@
 "use client";
 import { AiTwotoneAlert } from "react-icons/ai";
-
 import dummy from "@/public/images/dummy.jpg";
 import Image from "next/image";
 import map from "@/public/images/mapa.png";
@@ -23,22 +22,19 @@ const Sidebar: React.FC<Radnja> = ({ radnja }) => {
 
   const danas = () => {
     const dan = new Date().getDay();
-    if (dan === 0) return 7;
-    else return dan
+    return dan === 0 ? 7 : dan;
   };
 
   useEffect(() => {
-    const danRadnje = dani.find(
-      (item: any, index: number) => index+1 === danas()
-    );
+    const danRadnje = dani.find((item: any, index: number) => index + 1 === danas());
 
-    if (danRadnje.pocetak !== "" && danRadnje.kraj !== "") {
+    if (danRadnje && danRadnje.pocetak !== "" && danRadnje.kraj !== "") {
       const datum = {
-        pocetak: new Date(danRadnje.pocetak).toLocaleTimeString("sr-RS", {
+        pocetak: new Date(`1970-01-01T${danRadnje.pocetak}:00Z`).toLocaleTimeString("sr-RS", {
           hour: "2-digit",
           minute: "2-digit",
         }),
-        kraj: new Date(danRadnje.kraj).toLocaleTimeString("sr-RS", {
+        kraj: new Date(`1970-01-01T${danRadnje.kraj}:00Z`).toLocaleTimeString("sr-RS", {
           hour: "2-digit",
           minute: "2-digit",
         }),
@@ -49,14 +45,13 @@ const Sidebar: React.FC<Radnja> = ({ radnja }) => {
       const currentTime = new Date();
       const currentHour = Number(currentTime.getHours());
       const currentMinutes = Number(currentTime.getMinutes());
-      // Provera da li je trenutno vreme unutar radnog vremena radnje
+
       if (Number(startHour) <= currentHour && currentHour <= Number(endHour)) {
-        if (
-          currentMinutes > Number(endMinute) &&
-          currentHour === Number(endHour)
-        )
+        if (currentMinutes > Number(endMinute) && currentHour === Number(endHour)) {
           setIsRadnjaOpen(false);
-        else setIsRadnjaOpen(true);
+        } else {
+          setIsRadnjaOpen(true);
+        }
       } else {
         setIsRadnjaOpen(false);
       }
@@ -68,13 +63,12 @@ const Sidebar: React.FC<Radnja> = ({ radnja }) => {
   };
 
   const adresaSliced = () => {
-    const adresaSpliced = adresa.split(",");
-    return adresaSpliced;
+    return adresa ? adresa.split(",") : ["", ""];
   };
 
-  function capitalizeFirstLetter(string: string) {
+  const capitalizeFirstLetter = (string: string) => {
     return (string.charAt(0).toUpperCase() + string.slice(1)).slice(0, 3);
-  }
+  };
 
   return (
     <div className="flex flex-col md:sticky top-12 mb-12 md:px-4 lg:px-0 p-0">
@@ -95,11 +89,7 @@ const Sidebar: React.FC<Radnja> = ({ radnja }) => {
         <div className="flex text-gray-800 items-center mt-2">
           <IoTimeOutline className="p-3 md:w-12 md:h-12 w-16 h-16 flex items-center justify-center" />
           <div className="flex flex-col w-full md:w-48 overflow-clip">
-            <h1
-              className={`text-lg  md:text-sm font-semibold ${
-                isRadnjaOpen ? "text-green-600" : "text-red-600"
-              }`}
-            >
+            <h1 className={`text-lg md:text-sm font-semibold ${isRadnjaOpen ? "text-green-600" : "text-red-600"}`}>
               {isRadnjaOpen ? "Otvoreno" : "Zatvoreno"}
             </h1>
             <h3 className="text-base md:text-xs">Pregled radnog vremena</h3>
@@ -120,11 +110,7 @@ const Sidebar: React.FC<Radnja> = ({ radnja }) => {
               <div className="flex text-gray-800 items-center mt-2">
                 <IoTimeOutline className="p-3 md:w-12 md:h-12 w-16 h-16 flex items-center justify-center" />
                 <div className="flex flex-col w-full md:w-48 overflow-clip">
-                  <h1
-                    className={`text-lg md:text-sm font-semibold ${
-                      isRadnjaOpen ? "text-green-600" : "text-red-600"
-                    }`}
-                  >
+                  <h1 className={`text-lg md:text-sm font-semibold ${isRadnjaOpen ? "text-green-600" : "text-red-600"}`}>
                     {isRadnjaOpen ? "Otvoreno" : "Zatvoreno"}
                   </h1>
                   <h3 className="text-base md:text-xs">Pregled radnog vremena</h3>
@@ -135,39 +121,19 @@ const Sidebar: React.FC<Radnja> = ({ radnja }) => {
               </div>
               <div className="flex flex-col p-6">
                 {dani.map((vreme: any, key: number) => (
-                  <div
-                    key={vreme.dan}
-                    className="text-lg md:text-sm flex items-center justify-between"
-                  >
-                    <h1
-                      className={`${
-                        key + 1 === danas() && "font-bold"
-                      } text-gray-900`}
-                    >
-                      {capitalizeFirstLetter(vreme.dan)}
-                      {key + 1 === danas() && "(Danas)"}
+                  <div key={vreme.dan} className="text-lg md:text-sm flex items-center justify-between">
+                    <h1 className={`${key + 1 === danas() && "font-bold"} text-gray-900`}>
+                      {capitalizeFirstLetter(vreme.dan)}{key + 1 === danas() && " (Danas)"}
                     </h1>
-                    <h2
-                      className={`${
-                        key + 1 === danas()
-                          ? "font-bold text-blue-500"
-                          : "text-gray-600"
-                      }`}
-                    >
+                    <h2 className={`${key + 1 === danas() ? "font-bold text-blue-500" : "text-gray-600"}`}>
                       {vreme.pocetak !== "" && vreme.kraj !== ""
-                        ? `${new Date(vreme.pocetak).toLocaleTimeString(
-                            "sr-RS",
-                            {
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            }
-                          )}h - ${new Date(vreme.kraj).toLocaleTimeString(
-                            "sr-RS",
-                            {
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            }
-                          )}h`
+                        ? `${new Date(`1970-01-01T${vreme.pocetak}:00Z`).toLocaleTimeString("sr-RS", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}h - ${new Date(`1970-01-01T${vreme.kraj}:00Z`).toLocaleTimeString("sr-RS", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}h`
                         : "Neradan dan"}
                     </h2>
                   </div>
@@ -182,25 +148,12 @@ const Sidebar: React.FC<Radnja> = ({ radnja }) => {
           <h1 className="text-xl text-gray-800 font-semibold">Galerija</h1>
           <button className="text-blue-400 text-sm">Vidi sve</button>
         </div>
-
         <div className="grid grid-cols-3 grid-rows-2 gap-2">
-          {images.slice(0,4)
-            .map((x:string, y:number) => (
-              <button
-                key={y}
-                className={`${
-                  y === 1 || y === 2 ? "col-span-1" : "col-span-2"
-                } relative w-full h-16 overflow-hidden rounded-xl bg-black`}
-              >
-                <Image
-                  src={x}
-                  alt={`${y}`}
-                  fill
-                  objectFit="cover"
-                  className="opacity-65"
-                />
-              </button>
-            ))}
+          {images.slice(0, 4).map((x: string, y: number) => (
+            <button key={y} className={`${y === 1 || y === 2 ? "col-span-1" : "col-span-2"} relative w-full h-16 overflow-hidden rounded-xl bg-black`}>
+              <Image src={x ? x : dummy} alt={`${y}`} fill objectFit="cover" className="opacity-65" />
+            </button>
+          ))}
         </div>
       </div>
     </div>
