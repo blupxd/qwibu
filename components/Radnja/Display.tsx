@@ -115,7 +115,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
 
           <div className="flex gap-4">
             <Image
-              src={logo ? logo : dummy}
+              src={logo || dummy}
               alt="Logo"
               width={100}
               height={100}
