@@ -151,9 +151,9 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
                 </Link>
               ))}
           </div>
-          <Suspense fallback={<div>Loading...</div>}>
+          {/* <Suspense fallback={<div>Loading...</div>}>
             <Utisci />
-          </Suspense>
+          </Suspense> */}
         </div>
         <div className="flex flex-col col-span-5 md:col-span-4 lg:col-span-3 py-0 md:py-12 px-0 md:px-4 lg:px-12">
           <div className="flex rounded-b-xl md:rounded-xl mb-8 md:mb-10 lg:mb-16 flex-col h-64 md:h-44 lg:h-48 w-full items-center justify-center bg-black relative">
