@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito_Sans, Space_Grotesk, Lilita_One, Rowdies, Pacifico, DM_Serif_Display, Mate_SC, Righteous, Oleo_Script, Kaushan_Script } from "next/font/google";
+import { Nunito_Sans, Kaushan_Script } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Provider from "@/components/Provider";
