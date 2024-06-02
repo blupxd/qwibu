@@ -1,13 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 html {
   font-family: var(--font-nunito);
 }
- 
+
 .title {
   font-family: var(--font-space-grotesk);
 }
+
 @layer utilities {
   /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
@@ -79,6 +81,7 @@ html {
   fill: #f0f0f0 !important;
   cursor: not-allowed !important;
 }
+
 @keyframes dots-1 {
   from {
     opacity: 0;
