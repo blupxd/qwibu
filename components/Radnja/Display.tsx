@@ -19,10 +19,10 @@ import {
 } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { AiTwotoneAlert } from "react-icons/ai";
+import Utisci from "./Utisci";
 
 // Lazy load components
 const Services = dynamic(() => import("./Services"), { suspense: true });
-const Utisci = dynamic(() => import("./Utisci"), { suspense: true });
 const Sidebar = dynamic(() => import("./Sidebar"), { suspense: true });
 
 interface SideMenuItem {
@@ -151,9 +151,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
                 </Link>
               ))}
           </div>
-          <Suspense fallback={<div>Loading...</div>}>
             <Utisci />
-          </Suspense>
         </div>
         <div className="flex flex-col col-span-5 md:col-span-4 lg:col-span-3 py-0 md:py-12 px-0 md:px-4 lg:px-12">
           <div className="flex rounded-b-xl md:rounded-xl mb-8 md:mb-10 lg:mb-16 flex-col h-64 md:h-44 lg:h-48 w-full items-center justify-center bg-black relative">
