@@ -114,13 +114,13 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
           </h1>
 
           <div className="flex gap-4">
-            <Image
+            {/* <Image
               src={logo ? logo : dummy}
               alt="Logo"
               width={100}
               height={100}
               className="rounded-full w-14 h-14 shadow-lg shadow-black/10"
-            />
+            /> */}
             <div className="flex flex-col">
               <h1 className="text-base text-gray-800 font-bold">{naziv}</h1>
               <div className="flex gap-1 text-xs text-gray-900 items-center">
@@ -151,9 +151,9 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
                 </Link>
               ))}
           </div> */}
-          <Suspense fallback={<div>Loading...</div>}>
+          {/* <Suspense fallback={<div>Loading...</div>}>
             <Utisci />
-          </Suspense>
+          </Suspense> */}
         </div>
         <div className="flex flex-col col-span-5 md:col-span-4 lg:col-span-3 py-0 md:py-12 px-0 md:px-4 lg:px-12">
           <div className="flex rounded-b-xl md:rounded-xl mb-8 md:mb-10 lg:mb-16 flex-col h-64 md:h-44 lg:h-48 w-full items-center justify-center bg-black relative">
@@ -161,13 +161,13 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
               <FaArrowLeft className="hover:text-blue-500" />
             </button>
             <div className="flex z-10 items-start absolute -bottom-6 left-4 gap-4">
-              <Image
+              {/* <Image
                 src={logo ? logo : dummy}
                 width={100}
                 height={100}
                 alt="Logo"
                 className="rounded-full border-4 border-white h-32 w-32 md:w-28 md:h-28"
-              />
+              /> */}
               <div className="flex flex-col text-white">
                 <h3 className="text-3xl sm:text-4xl md:text-3xl mt-6 md:mt-4 lg:mt-2 font-semibold">
                   {naziv}
@@ -181,13 +181,13 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
             <button className="flex bg-white text-lg z-10 p-2 rounded-full absolute top-8 right-8">
               <FaRegHeart className="hover:text-blue-500" />
             </button>
-            <Image
+            {/* <Image
               src={images[0] ? images[0] : dummy}
               alt="Slika"
               fill
               objectFit="cover"
               className="opacity-40 rounded-b-xl md:rounded-xl"
-            />
+            /> */}
           </div>
           <div className="flex flex-col lg:hidden gap-2 mx-4 md:mx-0 mb-4">
             <div className="flex items-center">
@@ -239,15 +239,15 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
             </div>
           </div>
 
-          <Suspense fallback={<div>Loading...</div>}>
+          {/* <Suspense fallback={<div>Loading...</div>}>
             <Services radnja={radnja} />
-          </Suspense>
+          </Suspense> */}
         </div>
 
         <div className="col-span-5 md:col-span-2 lg:col-span-1 mt-12 mr-0 md:mr-4">
-          <Suspense fallback={<div>Loading...</div>}>
+          {/* <Suspense fallback={<div>Loading...</div>}>
             <Sidebar radnja={radnja} />
-          </Suspense>
+          </Suspense> */}
         </div>
       </div>
     </div>
