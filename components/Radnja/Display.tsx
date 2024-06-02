@@ -1,3 +1,4 @@
+"use client"
 import React, { Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,11 +19,11 @@ import {
 } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { AiTwotoneAlert } from "react-icons/ai";
-import Services from "./Services";
-import Sidebar from "./Sidebar";
-import Utisci from "./Utisci";
 
 // Lazy load components
+const Services = dynamic(() => import("./Services"), { suspense: true });
+const Utisci = dynamic(() => import("./Utisci"), { suspense: true });
+const Sidebar = dynamic(() => import("./Sidebar"), { suspense: true });
 
 interface SideMenuItem {
   ikonica: any;
@@ -41,35 +42,36 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
   const linkovi: SideMenuItem[] = [
     {
       ikonica: IoCallOutline,
-      tekst: "tel:" + telephone,
+      tekst: telephone ? "tel:" + telephone : "",
       label: "Telefon",
     },
     {
       ikonica: IoMailOutline,
-      tekst: "mailto:" + email,
+      tekst: email ? "mailto:" + email : "",
       label: "E-mail",
     },
     {
       ikonica: FaInstagram,
-      tekst: "https://" + socials[0].instagram,
+      tekst: socials[0].instagram ? "https://" + socials[0].instagram : "",
       label: "Instagram",
     },
     {
       ikonica: FaFacebook,
-      tekst: "https://" + socials[0].facebook,
+      tekst: socials[0].facebook ? "https://" + socials[0].facebook : "",
       label: "Facebook",
     },
     {
       ikonica: FaLinkedin,
-      tekst: "https://" + socials[0].linkedin,
+      tekst: socials[0].linkedin ? "https://" + socials[0].linkedin : "",
       label: "LinkedIn",
     },
     {
       ikonica: FaTiktok,
-      tekst: "https://" + socials[0].tiktok + "",
+      tekst: socials[0].tiktok ? "https://" + socials[0].tiktok : "",
       label: "Tiktok",
     },
   ];
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -81,6 +83,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <div className="flex flex-col">
       {scrollY >= 800 && (
@@ -112,7 +115,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
 
           <div className="flex gap-4">
             <Image
-              src={logo}
+              src={logo ? logo : dummy}
               alt="Logo"
               width={100}
               height={100}
@@ -148,7 +151,9 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
                 </Link>
               ))}
           </div>
+          <Suspense fallback={<div>Loading...</div>}>
             <Utisci />
+          </Suspense>
         </div>
         <div className="flex flex-col col-span-5 md:col-span-4 lg:col-span-3 py-0 md:py-12 px-0 md:px-4 lg:px-12">
           <div className="flex rounded-b-xl md:rounded-xl mb-8 md:mb-10 lg:mb-16 flex-col h-64 md:h-44 lg:h-48 w-full items-center justify-center bg-black relative">
@@ -236,11 +241,15 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
             </div>
           </div>
 
+          <Suspense fallback={<div>Loading...</div>}>
             <Services radnja={radnja} />
+          </Suspense>
         </div>
 
         <div className="col-span-5 md:col-span-2 lg:col-span-1 mt-12 mr-0 md:mr-4">
+          <Suspense fallback={<div>Loading...</div>}>
             <Sidebar radnja={radnja} />
+          </Suspense>
         </div>
       </div>
     </div>
