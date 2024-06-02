@@ -20,16 +20,16 @@ html {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
-  .scroller::-webkit-scrollbar {
+  .scroller {
     display: grid;
     grid-auto-flow: column;
     overflow-x: auto;
     overscroll-behavior: contain;
   }
-  .snaps-inline::-webkit-scrollbar {
+  .snaps-inline {
     scroll-snap-type: inline mandatory;
   }
-  .snaps-inline::-webkit-scrollbar > * {
+  .snaps-inline > * {
     scroll-snap-align: start;
   }
 }

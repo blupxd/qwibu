@@ -72,10 +72,10 @@ const Services: React.FC<Radnja> = ({ radnja }) => {
           ref={scrollerRef}
           className="-mx-4 lg:mx-0 pl-4 scroll-px-4 scroller auto-cols-[72%] md:auto-cols-[58%] xl:auto-cols-[52%] 2xl:auto-cols-[22%] snaps-inline no-scrollbar gap-x-12"
         >
-          {usluge && usluge.map((usluga: Usluga, key: number) => (
+          {usluge.length > 0 && usluge.map((usluga: Usluga, key: number) => (
             <div className="flex flex-col relative w-full h-44" key={key}>
               <div className="w-full h-32 rounded-2xl overflow-hidden relative">
-                <Image src={usluga?.slika ? usluga.slika : dummy} alt="slika" fill objectFit="cover" />
+                {/* <Image src={usluga?.slika ? usluga.slika : dummy} alt="slika" fill objectFit="cover" /> */}
                 <div className="relative opacity-0 hover:opacity-100 transition-all duration-200 z-10 top-0 right-0 bottom-0 left-0 w-full h-full bg-black/40 flex items-center justify-center">
                   <button
                     onClick={() => setZakazi(true)}
