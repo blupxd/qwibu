@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="rs" className={`${space.variable} ${nunito.variable}`}>
+    <html lang="rs" className={`${space.variable}`}>
       <body className={nunito.className}>
         <Provider>
           {children}

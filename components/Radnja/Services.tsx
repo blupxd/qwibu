@@ -85,7 +85,7 @@ const Services: React.FC<Radnja> = ({ radnja }) => {
                   </button>
                 </div>
               </div>
-              <div className="flex items-center gap-4 z-20 absolute left-0 right-0 mx-6 shadow-lg shadow-black/20 bottom-2 bg-white px-4 py-2 rounded-xl">
+              <div className="flex items-center gap-4 z-20 absolute left-0 right-0 mx-6 bottom-2 bg-white px-4 py-2 rounded-xl">
                 <div className="flex flex-col w-full">
                   <div className="flex items-center gap-2 justify-between">
                     <h1 className="text-base w-20 md:w-24 overflow-hidden overflow-ellipsis font-semibold text-gray-800">

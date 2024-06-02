@@ -91,7 +91,7 @@ const Utisci: React.FC = () => {
                 {review.user}
               </h2>
               <h3 className="text-gray-600 text-sm lg:text-xs">
-                {/* {format(new Date(review.date), "MMM d, yyyy")} */}
+                {format(review.date, "MMM d, yyyy")}
               </h3>
               <div className="flex items-center text-sm md:text-base lg:text-xs">
                 {getRating(review.rating)}

@@ -40,7 +40,7 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi,radnja }) => {
 
 
   return (
-    <div className="bg-white px-4 pt-12 md:p-12 md:max-h-max rounded-3xl md:rounded-xl flex flex-col gap-4 mx-0 lg:mx-64 mt-6 absolute left-0 right-0 bottom-0 h-2/3 md:h-auto">
+    <div className="bg-white px-4 pt-12 md:p-12 md:max-h-max rounded-t-3xl md:rounded-xl flex flex-col gap-4 mx-0 lg:mx-64 mt-6 absolute left-0 right-0 bottom-0 h-3/4 md:h-auto">
       <div className="flex items-center justify-between text-gray-900">
         <h1 className="text-left text-2xl font-semibold">{steps === 0 ? 'Izaberite radnika' : 'Izaberite termin'}</h1>
         {!steps ? <button

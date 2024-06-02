@@ -127,10 +127,10 @@ const Sidebar: React.FC<Radnja> = ({ radnja }) => {
                     </h1>
                     <h2 className={`${key + 1 === danas() ? "font-bold text-blue-500" : "text-gray-600"}`}>
                       {vreme.pocetak !== "" && vreme.kraj !== ""
-                        ? `${new Date(`1970-01-01T${vreme.pocetak}:00Z`).toLocaleTimeString("sr-RS", {
+                        ? `${new Date(`${vreme.pocetak}`).toLocaleTimeString("sr-RS", {
                             hour: "2-digit",
                             minute: "2-digit",
-                          })}h - ${new Date(`1970-01-01T${vreme.kraj}:00Z`).toLocaleTimeString("sr-RS", {
+                          })}h - ${new Date(`${vreme.kraj}`).toLocaleTimeString("sr-RS", {
                             hour: "2-digit",
                             minute: "2-digit",
                           })}h`

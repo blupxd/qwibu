@@ -33,9 +33,6 @@ const Hero: React.FC<SessionProp> = ({ session }) => {
   return (
     <section className="flex flex-col relative overflow-hidden">
       {scrollY >= 75 && <Navbar session={session} />}
-      <h1 className="text-2xl font-bold absolute max-w-max max-h-max top-6 text-white left-0 right-0 bottom-0 mx-auto z-20">
-        Logo
-      </h1>
       <nav className="flex items-center px-2 md:px-12 py-4 justify-between z-30">
         <div className="px-4 py-2 text-gray-800 text-lg font-bold">
           <Link href="/">Qwibu</Link>
@@ -61,14 +58,14 @@ const Hero: React.FC<SessionProp> = ({ session }) => {
           </div>
         )}
       </nav>
-      <div className="bg-gradient-to-br from-gray-200 to-gray-300 flex flex-col items-center justify-center h-[42rem] md:h-[36rem] z-10">
+      <div className="bg-gradient-to-br from-white to-gray-200 flex flex-col items-center justify-center h-[42rem] md:h-[36rem] z-10">
         <div className="flex flex-col items-center justify-center px-4 md:px-0">
           <Naslov />
           <SearchComponent setSearchOpen={setSearchOpen} />
           {!session?.user && (
             <Link
               href="/login"
-              className="flex items-center font-semibold gap-2 text-xs px-4 py-2 rounded-full border border-gray-600 mt-6"
+              className="flex items-center font-semibold gap-2 text-xs px-4 py-2 rounded-full border bg-white border-gray-600 mt-6"
             >
               <FaRegUser className="text-base" /> Prijavite se za sačuvanu
               adresu

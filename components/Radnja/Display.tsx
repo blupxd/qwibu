@@ -87,7 +87,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
   return (
     <div className="flex flex-col">
       {scrollY >= 800 && (
-        <div className="md:hidden flex items-center text-gray-800 z-30 bg-white top-0 justify-between sticky w-full p-4">
+        <div className="md:hidden flex items-center text-gray-800 z-30 bg-white top-0 justify-between fixed w-full p-4">
           <Link href="/" className="flex text-lg p-2 rounded-full">
             <FaArrowLeft className="hover:text-blue-500" />
           </Link>
@@ -155,9 +155,9 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
         </div>
         <div className="flex flex-col col-span-5 md:col-span-4 lg:col-span-3 py-0 md:py-12 px-0 md:px-4 lg:px-12">
           <div className="flex rounded-b-xl md:rounded-xl mb-8 md:mb-10 lg:mb-16 flex-col h-64 md:h-44 lg:h-48 w-full items-center justify-center bg-black relative">
-            <button className="flex bg-white text-lg z-10 p-2 rounded-full absolute top-8 left-8">
+            <Link href="/" className="flex bg-white text-lg z-10 p-2 rounded-full absolute top-8 left-8">
               <FaArrowLeft className="hover:text-blue-500" />
-            </button>
+            </Link>
             <div className="flex z-10 items-start absolute -bottom-6 left-4 gap-4">
               <Image
                 src={logo ? logo : dummy}
