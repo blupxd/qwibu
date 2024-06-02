@@ -114,13 +114,13 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
           </h1>
 
           <div className="flex gap-4">
-            {/* <Image
+            <Image
               src={logo ? logo : dummy}
               alt="Logo"
               width={100}
               height={100}
               className="rounded-full w-14 h-14 shadow-lg shadow-black/10"
-            /> */}
+            />
             <div className="flex flex-col">
               <h1 className="text-base text-gray-800 font-bold">{naziv}</h1>
               <div className="flex gap-1 text-xs text-gray-900 items-center">
