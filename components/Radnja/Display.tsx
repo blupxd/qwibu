@@ -86,7 +86,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
 
   return (
     <div className="flex flex-col">
-      {scrollY >= 800 && (
+      {/* {scrollY >= 800 && (
         <div className="md:hidden flex items-center text-gray-800 z-30 bg-white top-0 justify-between sticky w-full p-4">
           <Link href="/" className="flex text-lg p-2 rounded-full">
             <FaArrowLeft className="hover:text-blue-500" />
@@ -100,7 +100,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
             <FaRegHeart className="hover:text-blue-500" />
           </button>
         </div>
-      )}
+      )} */}
       <div className="grid grid-cols-5 md:grid-cols-6 lg:grid-cols-5">
         <div className="col-span-1 hidden lg:flex flex-col gap-4 md:p-6 lg:p-4 bg-gray-200">
           <Link
