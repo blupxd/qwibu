@@ -109,7 +109,7 @@ const Kalendar: React.FC<Radnja> = ({ radnja }) => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col mx-auto max-w-max">
+      {radnja ? <div className="flex flex-col mx-auto max-w-max">
         {isWorkDay(selectedDay) ? (
           <div className="flex items-center gap-6 overflow-x-scroll p-2">
             {termini()}
@@ -190,7 +190,7 @@ const Kalendar: React.FC<Radnja> = ({ radnja }) => {
               </div>
             ))}
         </div>
-      </div>
+      </div> : "loading"}
     </div>
   );
 };

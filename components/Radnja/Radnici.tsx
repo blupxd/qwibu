@@ -57,7 +57,7 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi,radnja }) => {
         </button>}
       </div>
 
-      {!steps ? (
+      {!steps && radnja ? (
         <div className="grid grid-cols-1 overflow-y-scroll no-scrollbar md:grid-cols-3 items-center gap-6">
           <div
             onClick={() => setSelected(null)}
@@ -94,8 +94,8 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi,radnja }) => {
           ))}
         </div>
       ) : 
-        radnja ? <Kalendar radnja={radnja}/> : "loading"
-      }
+        (<Kalendar radnja={radnja}/>
+      )}
       <button
         className="absolute top-2 right-2 text-3xl md:text-xl text-gray-800"
         onClick={() => {
