@@ -1,7 +1,8 @@
+"use client"
 import React, { useState } from "react";
 import user from "../../public/images/radnik.jpg";
 import Image from "next/image";
-import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaRegStar, FaStar } from "react-icons/fa";
 import { format } from "date-fns";
 
 interface Review {
