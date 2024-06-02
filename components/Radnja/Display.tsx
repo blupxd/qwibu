@@ -181,13 +181,13 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
             <button className="flex bg-white text-lg z-10 p-2 rounded-full absolute top-8 right-8">
               <FaRegHeart className="hover:text-blue-500" />
             </button>
-            {/* <Image
+            <Image
               src={images[0] ? images[0] : dummy}
               alt="Slika"
               fill
               objectFit="cover"
               className="opacity-40 rounded-b-xl md:rounded-xl"
-            /> */}
+            />
           </div>
           <div className="flex flex-col lg:hidden gap-2 mx-4 md:mx-0 mb-4">
             <div className="flex items-center">
