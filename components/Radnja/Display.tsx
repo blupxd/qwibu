@@ -101,7 +101,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
           </button>
         </div>
       )} */}
-      {/* <div className="grid grid-cols-5 md:grid-cols-6 lg:grid-cols-5">
+      <div className="grid grid-cols-5 md:grid-cols-6 lg:grid-cols-5">
         <div className="col-span-1 hidden lg:flex flex-col gap-4 md:p-6 lg:p-4 bg-gray-200">
           <Link
             href="/"
@@ -155,7 +155,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
             <Utisci />
           </Suspense>
         </div>
-        <div className="flex flex-col col-span-5 md:col-span-4 lg:col-span-3 py-0 md:py-12 px-0 md:px-4 lg:px-12">
+        {/* <div className="flex flex-col col-span-5 md:col-span-4 lg:col-span-3 py-0 md:py-12 px-0 md:px-4 lg:px-12">
           <div className="flex rounded-b-xl md:rounded-xl mb-8 md:mb-10 lg:mb-16 flex-col h-64 md:h-44 lg:h-48 w-full items-center justify-center bg-black relative">
             <button className="flex bg-white text-lg z-10 p-2 rounded-full absolute top-8 left-8">
               <FaArrowLeft className="hover:text-blue-500" />
@@ -242,14 +242,14 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
           <Suspense fallback={<div>Loading...</div>}>
             <Services radnja={radnja} />
           </Suspense>
-        </div>
+        </div> */}
 
         <div className="col-span-5 md:col-span-2 lg:col-span-1 mt-12 mr-0 md:mr-4">
           <Suspense fallback={<div>Loading...</div>}>
             <Sidebar radnja={radnja} />
           </Suspense>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
