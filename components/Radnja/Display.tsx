@@ -221,7 +221,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
               <FaLocationDot /> {adresa}
             </h2>
             <div className="flex flex-col md:hidden w-full mb-6 gap-4 text-gray-500">
-              {/* {linkovi
+              {linkovi
                 .filter(
                   (x) =>
                     x.tekst !== "" &&
@@ -235,7 +235,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
                   >
                     <link.ikonica className="text-lg" /> {link.label}
                   </Link>
-                ))} */}
+                ))}
             </div>
           </div>
 
