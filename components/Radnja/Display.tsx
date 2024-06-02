@@ -86,7 +86,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
 
   return (
     <div className="flex flex-col">
-      {/* {scrollY >= 800 && (
+      {scrollY >= 800 && (
         <div className="md:hidden flex items-center text-gray-800 z-30 bg-white top-0 justify-between sticky w-full p-4">
           <Link href="/" className="flex text-lg p-2 rounded-full">
             <FaArrowLeft className="hover:text-blue-500" />
@@ -100,7 +100,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
             <FaRegHeart className="hover:text-blue-500" />
           </button>
         </div>
-      )} */}
+      )}
       <div className="grid grid-cols-5 md:grid-cols-6 lg:grid-cols-5">
         <div className="col-span-1 hidden lg:flex flex-col gap-4 md:p-6 lg:p-4 bg-gray-200">
           <Link
@@ -142,7 +142,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
               </h3>
             </div>
           </div>
-          <div className="flex flex-wrap gap-12 p-4 border-y border-gray-300 w-full items-center text-gray-900 font-semibold">
+          {/* <div className="flex flex-wrap gap-12 p-4 border-y border-gray-300 w-full items-center text-gray-900 font-semibold">
             {linkovi
               .filter((x) => x.tekst)
               .map((link: SideMenuItem, key: number) => (
@@ -150,12 +150,12 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
                   <link.ikonica className="text-xl" />
                 </Link>
               ))}
-          </div>
+          </div> */}
           <Suspense fallback={<div>Loading...</div>}>
             <Utisci />
           </Suspense>
         </div>
-        {/* <div className="flex flex-col col-span-5 md:col-span-4 lg:col-span-3 py-0 md:py-12 px-0 md:px-4 lg:px-12">
+        <div className="flex flex-col col-span-5 md:col-span-4 lg:col-span-3 py-0 md:py-12 px-0 md:px-4 lg:px-12">
           <div className="flex rounded-b-xl md:rounded-xl mb-8 md:mb-10 lg:mb-16 flex-col h-64 md:h-44 lg:h-48 w-full items-center justify-center bg-black relative">
             <button className="flex bg-white text-lg z-10 p-2 rounded-full absolute top-8 left-8">
               <FaArrowLeft className="hover:text-blue-500" />
@@ -221,7 +221,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
               <FaLocationDot /> {adresa}
             </h2>
             <div className="flex flex-col md:hidden w-full mb-6 gap-4 text-gray-500">
-              {linkovi
+              {/* {linkovi
                 .filter(
                   (x) =>
                     x.tekst !== "" &&
@@ -235,14 +235,14 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
                   >
                     <link.ikonica className="text-lg" /> {link.label}
                   </Link>
-                ))}
+                ))} */}
             </div>
           </div>
 
           <Suspense fallback={<div>Loading...</div>}>
             <Services radnja={radnja} />
           </Suspense>
-        </div> */}
+        </div>
 
         <div className="col-span-5 md:col-span-2 lg:col-span-1 mt-12 mr-0 md:mr-4">
           <Suspense fallback={<div>Loading...</div>}>
