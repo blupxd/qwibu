@@ -142,7 +142,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
               </h3>
             </div>
           </div>
-          {/* <div className="flex flex-wrap gap-12 p-4 border-y border-gray-300 w-full items-center text-gray-900 font-semibold">
+          <div className="flex flex-wrap gap-12 p-4 border-y border-gray-300 w-full items-center text-gray-900 font-semibold">
             {linkovi
               .filter((x) => x.tekst)
               .map((link: SideMenuItem, key: number) => (
@@ -150,10 +150,10 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
                   <link.ikonica className="text-xl" />
                 </Link>
               ))}
-          </div> */}
-          {/* <Suspense fallback={<div>Loading...</div>}>
+          </div>
+          <Suspense fallback={<div>Loading...</div>}>
             <Utisci />
-          </Suspense> */}
+          </Suspense>
         </div>
         <div className="flex flex-col col-span-5 md:col-span-4 lg:col-span-3 py-0 md:py-12 px-0 md:px-4 lg:px-12">
           <div className="flex rounded-b-xl md:rounded-xl mb-8 md:mb-10 lg:mb-16 flex-col h-64 md:h-44 lg:h-48 w-full items-center justify-center bg-black relative">
@@ -245,9 +245,9 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
         </div>
 
         <div className="col-span-5 md:col-span-2 lg:col-span-1 mt-12 mr-0 md:mr-4">
-          {/* <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div>Loading...</div>}>
             <Sidebar radnja={radnja} />
-          </Suspense> */}
+          </Suspense>
         </div>
       </div>
     </div>
