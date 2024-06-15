@@ -98,7 +98,7 @@ const Kalendar: React.FC<Radnja> = ({ radnja }) => {
         className={`text-base font-semibold w-14 h-14 rounded-full flex items-center justify-center p-2 ${
           isEqual(x,selectedTermin!)
             ? "bg-blue-500 text-white"
-            : "bg-gray-200 text-gray-800"
+            : "bg-white border border-gray-200 text-gray-800"
         } hover:bg-blue-500 hover:text-white`}
         key={y}
       >
@@ -176,7 +176,7 @@ const Kalendar: React.FC<Radnja> = ({ radnja }) => {
                     (isEqual(day, selectedDay) || isToday(day)) &&
                       "font-semibold",
                     "mx-auto flex h-10 w-10 items-center justify-center rounded-full",
-                    isBefore(day, today) && "bg-gray-300 ",
+                    isBefore(day, today) && "bg-gray-200 ",
                     !isWorkDay(day) &&
                       !isBefore(day, today) &&
                       "bg-blue-400 text-white"

@@ -69,7 +69,7 @@ const Info: React.FC = () => {
 
       <div
         ref={scrollerRef}
-        className="-mx-4 pl-4 lg:mx-0 mb-24 scroll-px-4 scroller auto-cols-[33%] md:auto-cols-[30%] snaps-inline no-scrollbar gap-12"
+        className="-mx-4 pl-4 lg:mx-0 mb-16 scroll-px-4 scroller auto-cols-[33%] md:auto-cols-[30%] snaps-inline no-scrollbar gap-12"
       >
         {radnici.map((radnik: Radnik, index: number) => (
           <div key={index} className="flex flex-col max-w-max">

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { IoCallOutline, IoMailOutline } from "react-icons/io5";
 import dummy from "@/public/images/dummy.jpg";
 import dynamic from "next/dynamic";
-import { CiGrid41 } from "react-icons/ci";
+import { CiCircleQuestion, CiGrid41 } from "react-icons/ci";
 import { IoIosArrowBack } from "react-icons/io";
 import {
   FaArrowLeft,
@@ -132,7 +132,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
             </div>
           </div>
           <div className="hidden md:flex items-center mb-2">
-            <AiTwotoneAlert className="w-8 h-8 text-gray-800" />
+            <CiCircleQuestion className="w-8 h-8 text-gray-800" />
             <div className="flex flex-col ml-2">
               <h1 className="font-semibold text-base text-gray-800">
                 Obaveštenja za kupce
@@ -189,9 +189,9 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
           </div>
           <div className="flex flex-col lg:hidden gap-2 mx-4 md:mx-0 mb-4">
             <div className="flex items-center">
-              <AiTwotoneAlert className="w-10 h-10 text-gray-800" />
+              <CiCircleQuestion className="w-10 h-10 text-gray-700" />
               <div className="flex flex-col ml-2">
-                <h1 className="font-semibold text-lg text-gray-800">
+                <h1 className="font-semibold text-lg text-gray-600">
                   Obaveštenja za kupce
                 </h1>
                 <h3 className="text-base italic text-gray-600">

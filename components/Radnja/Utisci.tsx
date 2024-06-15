@@ -80,7 +80,7 @@ const Utisci: React.FC = () => {
       </div>
 
       {reviews.slice(0, prikaz).map((review, index) => (
-        <div key={index} className="mb-4 md:mb-12 px-4 py-6 rounded-xl bg-white shadow-lg shadow-black/20 lg:shadow-black/10">
+        <div key={index} className="mb-4 md:mb-12 px-0 md:px-4 py-6 rounded-xl bg-white">
           <div className="flex mb-2">
             <div className="mt-1 overflow-hidden relative lg:w-12 lg:h-12 md:w-16 md:h-16 w-16 h-16 rounded-full mr-2">
               <Image src={user} alt="User" objectFit="cover" fill />

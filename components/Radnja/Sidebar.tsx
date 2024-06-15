@@ -104,7 +104,7 @@ const Sidebar: React.FC<Radnja> = ({ radnja }) => {
               initial={{ opacity: 0, y: 80 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 80 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
               className="absolute w-full h-full left-0 top-0 bg-white flex flex-col px-4 md:px-0 z-20"
             >
               <div className="flex text-gray-800 items-center mt-2">
