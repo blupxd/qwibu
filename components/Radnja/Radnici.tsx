@@ -74,21 +74,16 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
         const result = await response.json();
         console.log("Uspešno poslano:", result);
         setSendStatus(true);
+        setTimeout(() => location.reload(), 2000);
       } else {
         const errorResponse = await response.json();
         console.error("Greška prilikom zakazivanja:", errorResponse);
         setSendStatus(false);
+        setTimeout(() => location.reload(), 2000);
       }
     } catch (error) {
       console.error("Greška prilikom slanja forme:", error);
       setSendStatus(false);
-    } finally {
-      setLoading(false);
-      setTimeout(() => {
-        setSendStatus(null);
-        setLoading(false);
-        router.push("/radnja/" + radnja.id);
-      }, 2000);
     }
   };
 
@@ -97,15 +92,19 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
       {loading && (
         <div className="absolute flex items-center justify-center bg-white/70 z-40 w-full h-full top-0 left-0">
           {sendStatus === null ? (
-            <div className="flex flex-col gap-6 items-center">
-              <h1 className="font-bold text-xl">We are booking your schedule</h1>
+            <div className="flex flex-col gap-6 items-center  md:px-6 px-0">
+              <h1 className="font-bold text-xl">
+                We are booking your schedule
+              </h1>
               <PropagateLoader color="#222229" size={16} />
             </div>
           ) : sendStatus ? (
-            <div className="flex flex-col gap-6 items-center">
-              <h1 className="text-xl">
+            <div className="flex flex-col gap-6 items-center md:px-6 px-0">
+              <h1 className="text-xl w-72 md:w-auto">
                 You've successfully made an appointment for{" "}
-                <strong>{format(new Date(vreme!), "d MMMM yyyy. - hh:mm a")}</strong>
+                <strong>
+                  {format(new Date(vreme!), "d MMMM yyyy. - hh:mm a")}
+                </strong>
               </h1>
               <motion.div
                 animate={{ scale: [1, 1.5, 1] }}
@@ -116,7 +115,9 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
             </div>
           ) : (
             <div className="flex flex-col gap-6 items-center">
-              <h1 className="text-xl">An error has occurred while making your appointment!</h1>
+              <h1 className="text-xl  w-72 md:w-auto">
+                An error has occurred while making your appointment!
+              </h1>
               <motion.div
                 animate={{ scale: [1, 1.5, 1] }}
                 transition={{ duration: 0.5 }}
