@@ -28,8 +28,11 @@ function classNames(...classes: any) {
 interface Radnja {
   radnja: any;
 }
+interface ZakazivanjeProps {
+  setVreme: (vreme: Date | null) => void;
+}
 
-const Kalendar: React.FC<Radnja> = ({ radnja }) => {
+const Kalendar: React.FC<Radnja & ZakazivanjeProps> = ({ radnja, setVreme }) => {
   const { dani, interval } = radnja;
   let today = startOfToday();
   const [selectedTermin, setSelectedTermin] = useState<Date | null>(null);
@@ -97,15 +100,19 @@ const Kalendar: React.FC<Radnja> = ({ radnja }) => {
         onClick={() => setSelectedTermin(x)}
         className={`text-base font-semibold w-14 h-14 rounded-full flex items-center justify-center p-2 ${
           isEqual(x,selectedTermin!)
-            ? "bg-blue-500 text-white"
+            ? "bg-gray-600 text-white"
             : "bg-white border border-gray-200 text-gray-800"
-        } hover:bg-blue-500 hover:text-white`}
+        } hover:bg-gray-600 hover:text-white`}
         key={y}
       >
         {format(x, "kk:mm")}
       </button>
     ));
   };
+useEffect(() => {
+  setVreme(selectedTermin);
+  console.log(selectedTermin);
+}, [selectedTermin])
 
   return (
     <div className="flex flex-col">
@@ -115,7 +122,7 @@ const Kalendar: React.FC<Radnja> = ({ radnja }) => {
             {termini()}
           </div>
         ) : (
-          <div>Izabrali ste neradan dan!</div>
+          <div className="py-8">Izabrali ste neradan dan!</div>
         )}
 
         <div className="flex items-center">
@@ -124,13 +131,13 @@ const Kalendar: React.FC<Radnja> = ({ radnja }) => {
           </h1>
           <button
             onClick={() => prevMonth()}
-            className="flex flex-none items-center justify-center p-1.5 text-blue-400 hover:text-blue-500"
+            className="flex flex-none items-center justify-center p-1.5 text-gray-700 hover:text-gray-600"
           >
             <FaChevronLeft className="w-5 h-5" aria-hidden="true" />
           </button>
           <button
             onClick={() => nextMonth()}
-            className="ml-2 flex flex-none items-center justify-center p-1.5 text-blue-400 hover:text-blue-500"
+            className="ml-2 flex flex-none items-center justify-center p-1.5 text-gray-700 hover:text-gray-600"
           >
             <FaChevronRight className="w-5 h-5" aria-hidden="true" />
           </button>
@@ -159,7 +166,7 @@ const Kalendar: React.FC<Radnja> = ({ radnja }) => {
                     isEqual(day, selectedDay) && "text-white",
                     !isEqual(day, selectedDay) &&
                       isToday(day) &&
-                      "text-blue-500",
+                      "text-gray-500",
                     !isEqual(day, selectedDay) &&
                       !isToday(day) &&
                       isSameMonth(day, firstDayCurrentMonth) &&
@@ -168,18 +175,18 @@ const Kalendar: React.FC<Radnja> = ({ radnja }) => {
                       !isToday(day) &&
                       !isSameMonth(day, firstDayCurrentMonth) &&
                       "text-gray-400",
-                    isEqual(day, selectedDay) && isToday(day) && "bg-blue-500",
-                    isEqual(day, selectedDay) && !isToday(day) && "bg-gray-900",
+                    isEqual(day, selectedDay) && isToday(day) && "bg-gray-500",
+                    isEqual(day, selectedDay) && !isToday(day) && "bg-gray-600",
                     !isEqual(day, selectedDay) &&
                       !isBefore(day, today) &&
-                      "hover:border-blue-600 hover:border-2",
+                      "hover:border-gray-600 hover:border-2",
                     (isEqual(day, selectedDay) || isToday(day)) &&
                       "font-semibold",
                     "mx-auto flex h-10 w-10 items-center justify-center rounded-full",
                     isBefore(day, today) && "bg-gray-200 ",
                     !isWorkDay(day) &&
                       !isBefore(day, today) &&
-                      "bg-blue-400 text-white"
+                      "bg-gray-800 text-white"
                   )}
                   disabled={isBefore(day, today)}
                 >

@@ -33,7 +33,7 @@ const UserNav = ({ profilna, color }: UserNavProps) => {
   return (
     <div className="relative">
       <div className="flex items-center gap-16">
-        <button className={`text-2xl text-${color} relative`}>
+        <button className={`text-2xl text-gray-900 relative`}>
           <FiBell />
           <h1 className="text-xs absolute -top-4 -right-4 bg-red-500 rounded-full h-6 w-6 flex items-center justify-center text-white">
             2
@@ -41,7 +41,7 @@ const UserNav = ({ profilna, color }: UserNavProps) => {
         </button>
         <button
           className={`w-12 h-12 relative overflow-hidden border-2 ${
-            isOpen ? "border-orange-400" : `border-${color}`
+            isOpen ? "border-gray-800" : `border-gray-900`
           } rounded-full`}
           onClick={handleToggle}
         >

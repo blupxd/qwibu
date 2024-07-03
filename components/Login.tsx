@@ -18,7 +18,7 @@ const Login = () => {
     const signInData = await signIn("credentials", {
       email: email,
       password: password,
-      redirect: false,
+      redirect: true,
       callbackUrl: `${window.location.origin}/`,
     });
     if (signInData?.error) {

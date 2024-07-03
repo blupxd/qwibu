@@ -44,13 +44,13 @@ const Hero: React.FC<SessionProp> = ({ session }) => {
         ) : (
           <div className="flex items-center text-sm gap-2 md:gap-4">
             <Link
-              className="px-2 py-1 font-bold rounded-full text-gray-900"
+              className="px-2 py-2 font-bold rounded-full text-gray-900"
               href="/login"
             >
               Prijavi se
             </Link>
             <Link
-              className="px-2 py-1 rounded-full bg-gray-900 text-white"
+              className="px-2 py-2 rounded-full bg-gray-900 text-white"
               href="/register"
             >
               Registruj se

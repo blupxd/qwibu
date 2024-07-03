@@ -68,21 +68,32 @@ model Usluga {
 }
 
 model Radnja {
-  id         String      @id @default(cuid())
-  naziv      String
-  adresa     String
-  logo       String
-  images     String[]
-  telephone  String?
-  interval   Float
-  email      String      @unique
-  owner      User        @relation(fields: [ownerId], references: [id])
-  ownerId    String      @unique
-  comments   Comment[]
-  socials    Socials[]
-  usluge     Usluga[]
-  dani       Dan[]
-  smene      Smena[]
+  id        String     @id @default(cuid())
+  naziv     String
+  adresa    String
+  logo      String
+  images    String[]
+  telephone String?
+  interval  Float
+  email     String     @unique
+  owner     User       @relation(fields: [ownerId], references: [id])
+  ownerId   String     @unique
+  comments  Comment[]
+  schedules Schedule[]
+  socials   Socials[]
+  usluge    Usluga[]
+  dani      Dan[]
+  smene     Smena[]
+}
+
+model Schedule {
+  id       String @id @default(cuid())
+  clientId String 
+  radnjaId String
+  time     String
+  workerId String
+  client   User   @relation(fields: [clientId], references: [id])
+  radnja   Radnja @relation(fields: [radnjaId], references: [id], onDelete: Cascade)
 }
 
 model Smena {
@@ -104,16 +115,17 @@ model Dan {
 
 model User {
   password      String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  id            String    @id @default(cuid())
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  id            String     @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
+  schedules     Schedule[]
   ownedRadnja   Radnja?
   accounts      Account[]
-  role          String    @default("korisnik")
+  role          String     @default("korisnik")
   sessions      Session[]
 }
 

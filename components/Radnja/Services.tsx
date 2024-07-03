@@ -24,6 +24,7 @@ interface Radnja {
 }
 const Services: React.FC<Radnja> = ({ radnja }) => {
   const [zakazi, setZakazi] = useState(false);
+  const [usluga, setUsluga] = useState<string>("");
   const { usluge } = radnja;
   const scrollerRef = useRef<HTMLDivElement>(null);
 
@@ -78,7 +79,10 @@ const Services: React.FC<Radnja> = ({ radnja }) => {
                 <Image src={usluga.slika ? usluga.slika : dummy} alt="slika" fill objectFit="cover" />
                 <div className="relative opacity-0 hover:opacity-100 transition-all duration-200 z-10 top-0 right-0 bottom-0 left-0 w-full h-full bg-black/40 flex items-center justify-center">
                   <button
-                    onClick={() => setZakazi(true)}
+                    onClick={() => {
+                      setZakazi(true)
+                      setUsluga(usluga.naziv)
+                    }}
                     className="text-white p-4 bg-gray-900 text-3xl rounded-full"
                   >
                     <BsClipboardPlusFill />
@@ -110,7 +114,7 @@ const Services: React.FC<Radnja> = ({ radnja }) => {
       <Info />
       {zakazi && (
         <div className="fixed z-50 top-0 right-0 left-0 bottom-0 bg-black/20">
-          {radnja ? <Radnici setZakazi={setZakazi} radnja={radnja} /> : ''} 
+          {radnja ? <Radnici setZakazi={setZakazi} radnja={radnja} usluga={usluga}/> : ''} 
         </div>
       )}
     </div>
