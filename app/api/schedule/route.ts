@@ -17,7 +17,7 @@ export async function POST(req: Request) {
 
     const { radnjaId, time, workerId } = body;
 
-    const existingSchedule = await db.schedule.findUnique({
+    const existingSchedule = await db.schedule.findFirst({
       where: { time: time, clientId: clientId, workerId: workerId },
     });
     if(existingSchedule){
