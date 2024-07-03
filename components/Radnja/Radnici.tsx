@@ -74,13 +74,14 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
         const result = await response.json();
         console.log("Uspešno poslano:", result);
         setSendStatus(true);
-        setTimeout(() => router.refresh(), 2000);
+        router.refresh
       } else {
         const errorResponse = await response.json();
         console.error("Greška prilikom zakazivanja:", errorResponse);
         setSendStatus(false);
-        setTimeout(() => router.refresh(), 2000);
+        router.refresh
       }
+      
     } catch (error) {
       console.error("Greška prilikom slanja forme:", error);
     }
