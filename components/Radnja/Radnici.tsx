@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import slika from "../../public/images/radnik.jpg";
+import slika iz "../../public/images/radnik.jpg";
 import { PiUsersThree } from "react-icons/pi";
 import { IoMdClose } from "react-icons/io";
-import Kalendar from "./Kalendar";
+import Kalendar iz "./Kalendar";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { PropagateLoader } from "react-spinners";
@@ -74,16 +74,21 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
         const result = await response.json();
         console.log("Uspešno poslano:", result);
         setSendStatus(true);
-        router.refresh
       } else {
         const errorResponse = await response.json();
         console.error("Greška prilikom zakazivanja:", errorResponse);
         setSendStatus(false);
-        router.refresh
       }
-      
     } catch (error) {
       console.error("Greška prilikom slanja forme:", error);
+      setSendStatus(false);
+    } finally {
+      setLoading(false);
+      setTimeout(() => {
+        setSendStatus(null);
+        setLoading(false);
+        router.push("/radnja/" + radnja.id);
+      }, 2000);
     }
   };
 
@@ -106,7 +111,7 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
                 animate={{ scale: [1, 1.5, 1] }}
                 transition={{ duration: 0.5 }}
               >
-                <FaCircleCheck className="w-24 h-24 text-gray-800" />
+                <FaCircleCheck className="w-24 h-24 text-gray-700" />
               </motion.div>
             </div>
           ) : (
@@ -213,7 +218,9 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
       )}
       <button
         className="absolute top-2 right-2 text-3xl md:text-xl text-gray-800"
-        onClick={() => setZakazi(false)}
+        onClick={() => {
+          setZakazi(false);
+        }}
       >
         <IoMdClose className="w-full h-full" />
       </button>
