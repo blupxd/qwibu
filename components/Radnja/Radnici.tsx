@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import slika iz "../../public/images/radnik.jpg";
+import slika from "../../public/images/radnik.jpg";
 import { PiUsersThree } from "react-icons/pi";
 import { IoMdClose } from "react-icons/io";
-import Kalendar iz "./Kalendar";
+import Kalendar from "./Kalendar";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { PropagateLoader } from "react-spinners";
