@@ -36,6 +36,11 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
 
   const radnici: RadniciArr[] = [
     {
+      ime: "Any",
+      prezime: "Any",
+      role: "Any"
+    },
+    {
       ime: "Marko",
       prezime: "Petrović",
       role: "Master Barber",
@@ -90,7 +95,7 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
   return (
     <div className="bg-white px-4 pt-12 md:p-12 md:max-h-max rounded-t-3xl md:rounded-xl flex flex-col gap-4 mx-0 lg:mx-64 mt-6 absolute left-0 right-0 bottom-0 h-[90%] lg:my-12">
       {loading && (
-        <div className="absolute flex items-center justify-center bg-white/70 z-40 w-full h-full top-0 left-0">
+        <div className="absolute flex items-center justify-center bg-white z-40 w-full h-full top-0 left-0">
           {sendStatus === null ? (
             <div className="flex flex-col gap-6 items-center  md:px-6 px-0">
               <h1 className="font-bold text-xl">
@@ -100,7 +105,7 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
             </div>
           ) : sendStatus ? (
             <div className="flex flex-col gap-6 items-center md:px-6 px-0">
-              <h1 className="text-xl w-72 md:w-auto">
+              <h1 className="text-xl w-72 text-center md:w-auto">
                 You've successfully made an appointment for{" "}
                 <strong>
                   {format(new Date(vreme!), "d MMMM yyyy. - hh:mm a")}
@@ -115,7 +120,7 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
             </div>
           ) : (
             <div className="flex flex-col gap-6 items-center">
-              <h1 className="text-xl  w-72 md:w-auto">
+              <h1 className="text-xl text-center w-72 md:w-auto">
                 An error has occurred while making your appointment!
               </h1>
               <motion.div
@@ -152,9 +157,9 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
       {!steps && radnja ? (
         <div className="grid grid-cols-1 overflow-y-scroll no-scrollbar md:grid-cols-3 items-center gap-6">
           <div
-            onClick={() => setSelected(null)}
+            onClick={() => setSelected(0)}
             className={`flex flex-col justify-center items-center h-48 rounded-xl ${
-              selected === null
+              selected === 0
                 ? "border-gray-500 border-2"
                 : "border-gray-300 border"
             } cursor-pointer`}
@@ -165,12 +170,12 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
               <h2 className="text-gray-500 text-sm">Sto pre do usluge</h2>
             </div>
           </div>
-          {radnici.map((radnik: RadniciArr, key: number) => (
+          {radnici.slice(1,4).map((radnik: RadniciArr, key: number) => (
             <div
               key={key}
-              onClick={() => setSelected(key)}
+              onClick={() => setSelected(key+1)}
               className={`flex flex-col justify-center items-center h-48 rounded-xl ${
-                selected === key
+                selected === key+1
                   ? "border-gray-500 border-2"
                   : "border-gray-300 border"
               } cursor-pointer`}
@@ -187,7 +192,7 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
         </div>
       ) : (
         <div className="flex flex-col">
-          <Kalendar setVreme={setVreme} radnja={radnja} />
+          <Kalendar setVreme={setVreme} radnja={radnja} radnik={radnici[selected!].ime}/>
           <div className="flex items-center justify-between">
             <div className="flex flex-col text-gray-600">
               <h1>

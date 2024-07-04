@@ -40,7 +40,7 @@ const Page = () => {
       const data = await fetchRadnja(slug as string);
       setRadnja(data);
     };
-
+    console.log(radnja);
     loadRadnja();
   }, [slug]);
 

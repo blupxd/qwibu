@@ -36,7 +36,7 @@ interface Radnja {
 }
 
 const Display: React.FC<Radnja> = ({ radnja }) => {
-  const { naziv, email, adresa, logo, telephone, images, socials, dani } =
+  const { naziv, email, adresa, logo, telephone, images, socials, dani, schedules } =
     radnja;
   const [scrollY, setScrollY] = useState<number>(0);
   const linkovi: SideMenuItem[] = [
@@ -73,6 +73,7 @@ const Display: React.FC<Radnja> = ({ radnja }) => {
   ];
 
   useEffect(() => {
+    console.log(radnja);
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };

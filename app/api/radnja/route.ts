@@ -127,6 +127,7 @@ export async function GET(req: NextRequest) {
           socials: true,
           usluge: true,
           smene: true,
+          schedules: true,
           dani: true // Ovo dohvaća povezane proizvode
         }
       });
@@ -144,6 +145,7 @@ export async function GET(req: NextRequest) {
         include: {
           socials: true,
           usluge: true,
+          schedules: true,
           smene: true,
           dani: true
         }

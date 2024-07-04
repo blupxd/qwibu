@@ -18,6 +18,7 @@ import {
   addMinutes,
   set,
 } from "date-fns";
+import { useSession } from "next-auth/react";
 
 // Constants
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -29,11 +30,13 @@ interface Radnja {
   radnja: any;
 }
 interface ZakazivanjeProps {
-  setVreme: (vreme: Date | null) => void;
+  setVreme: (vreme: Date | null) => void,
+  radnik: string,
 }
 
-const Kalendar: React.FC<Radnja & ZakazivanjeProps> = ({ radnja, setVreme }) => {
-  const { dani, interval } = radnja;
+const Kalendar: React.FC<Radnja & ZakazivanjeProps> = ({ radnja, setVreme, radnik }) => {
+  const { dani, interval, schedules } = radnja;
+  const {data:session} = useSession()
   let today = startOfToday();
   const [selectedTermin, setSelectedTermin] = useState<Date | null>(null);
   const [selectedDay, setSelectedDay] = useState<Date>(today);
@@ -94,24 +97,25 @@ const Kalendar: React.FC<Radnja & ZakazivanjeProps> = ({ radnja, setVreme }) => 
       const termin = addMinutes(pocetniDatum, i * 60);
       termini.push(termin);
     }
-
-    return termini.map((x, y) => (
+    const radnikTermini = schedules.filter((x:any) => x.workerId === radnik)
+    const filtrirani = termini.filter((x) => !radnikTermini.some((y:any) => isEqual(new Date(x), new Date(y.time))));
+    return filtrirani.length ? filtrirani.map((x, y) => (
       <button
         onClick={() => setSelectedTermin(x)}
         className={`text-base font-semibold w-14 h-14 rounded-full flex items-center justify-center p-2 ${
           isEqual(x,selectedTermin!)
             ? "bg-gray-600 text-white"
-            : "bg-white border border-gray-200 text-gray-800"
+            : "bg-white border-4 border-gray-700 text-gray-800"
         } hover:bg-gray-600 hover:text-white`}
         key={y}
       >
         {format(x, "kk:mm")}
       </button>
-    ));
+    )) : <h1 className="text-xl text-gray-500">{radnik} has no free schedules on this day!</h1>
   };
+
 useEffect(() => {
   setVreme(selectedTermin);
-  console.log(selectedTermin);
 }, [selectedTermin])
 
   return (
@@ -122,7 +126,7 @@ useEffect(() => {
             {termini()}
           </div>
         ) : (
-          <div className="py-8">Izabrali ste neradan dan!</div>
+          <div className="py-8 text-xl font-semibold">Izabrali ste neradan dan!</div>
         )}
 
         <div className="flex items-center">
@@ -175,18 +179,19 @@ useEffect(() => {
                       !isToday(day) &&
                       !isSameMonth(day, firstDayCurrentMonth) &&
                       "text-gray-400",
-                    isEqual(day, selectedDay) && isToday(day) && "bg-gray-500",
+                      !isWorkDay(day) &&
+                      !isBefore(day, today) &&
+                      "bg-red-500 text-white",
+                    isEqual(day, selectedDay) && isToday(day) && "border-4 border-gray-900/70",
                     isEqual(day, selectedDay) && !isToday(day) && "bg-gray-600",
                     !isEqual(day, selectedDay) &&
                       !isBefore(day, today) &&
                       "hover:border-gray-600 hover:border-2",
                     (isEqual(day, selectedDay) || isToday(day)) &&
-                      "font-semibold",
+                      "font-semibold bg-gray-900",
                     "mx-auto flex h-10 w-10 items-center justify-center rounded-full",
                     isBefore(day, today) && "bg-gray-200 ",
-                    !isWorkDay(day) &&
-                      !isBefore(day, today) &&
-                      "bg-gray-800 text-white"
+                    
                   )}
                   disabled={isBefore(day, today)}
                 >

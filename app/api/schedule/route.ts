@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     const { radnjaId, time, workerId } = body;
 
     const existingSchedule = await db.schedule.findFirst({
-      where: { time: time, clientId: clientId, workerId: workerId },
+      where: { time: time, workerId: workerId },
     });
     if(existingSchedule){
         return NextResponse.json(
