@@ -197,7 +197,7 @@ const Radnici: React.FC<ZakazivanjeProps> = ({ setZakazi, radnja, usluga }) => {
             <div className="flex flex-col text-gray-600">
               <h1>
                 <strong>Radnik </strong>
-                {selected !== null ? radnici[selected!].ime : "Prvi slobodan"}
+                {radnici[selected!].ime}
               </h1>
               <h1>
                 <strong>Usluga </strong>
