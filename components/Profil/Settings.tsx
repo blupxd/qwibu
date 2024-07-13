@@ -48,7 +48,7 @@ const Settings = () => {
   };
 
   return (
-    <div className="flex flex-col mx-12 w-full">
+    <div className="flex flex-col mx-24">
       <h1 className="text-gray-900 text-xl font-semibold">Podaci o nalogu</h1>
       <div className="flex flex-col gap-12 mt-12">
         {settings.map((stavka, key) => (

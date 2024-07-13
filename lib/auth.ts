@@ -37,11 +37,14 @@ export const authOptions: NextAuthOptions = {
           where: {
             email: credentials.email,
           },
+          include: {
+            schedules: true
+          }
         });
         if (!existingUser) {
           return null;
         }
-
+        console.log("User from DB", existingUser);  // Dodajte ovo za logovanje
         if (existingUser.password) {
           const passwordMatch = await compare(
             credentials.password,
@@ -59,6 +62,7 @@ export const authOptions: NextAuthOptions = {
           name: existingUser.name,
           email: existingUser.email,
           role: existingUser.role,
+          schedules: existingUser.schedules
         };
       },
     }),
@@ -75,6 +79,7 @@ export const authOptions: NextAuthOptions = {
           name: user.name,
           id: user.id,
           role: user.role,
+          schedules: user.schedules
         };
       }
 
@@ -88,6 +93,7 @@ export const authOptions: NextAuthOptions = {
           name: token.name,
           id: token.id,
           role: token.role,
+          schedules: token.schedules
         },
       };
     },

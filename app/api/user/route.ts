@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { genSalt, hash } from "bcrypt";
 
 export async function POST(req: Request) {
@@ -18,7 +18,7 @@ export async function POST(req: Request) {
         { status: 409 }
       );
     }
-    
+
     const saltRounds = 10;
     const salt = await genSalt(saltRounds);
     const hashedPassword = await hash(password, salt);
@@ -78,28 +78,32 @@ export async function PUT(req: Request) {
     );
   }
 }
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   try {
+    const id = req.nextUrl.searchParams.get("id");
+    if (id) {
+      const user = await db.user.findUnique({
+        where: { id: id+"" },
+        include: {
+          schedules: true
+        }
+      });
 
-    // Pronalaženje korisnika sa datim ID-om
-    const user = await db.user.findMany({
-      include: {
-        ownedRadnja: true,
-      },
-    });
-
-    if (!user) {
+      if (!user) {
+        return NextResponse.json(
+          { message: "Korisnik nije pronađen!" },
+          { status: 404 }
+        );
+      }
+      return NextResponse.json({ user }, { status: 200 });
+    } else {
       return NextResponse.json(
-        { message: "Korisnik nije pronađen!" },
-        { status: 404 }
+        { message: "ID nije naveden!" },
+        { status: 400 }
       );
     }
-
-    return NextResponse.json(
-      { user },
-      { status: 200 }
-    );
   } catch (error) {
+    console.error("Greška pri pronalaženju korisnika:", error);
     return NextResponse.json(
       { message: "Greška pri pronalaženju korisnika!" },
       { status: 500 }

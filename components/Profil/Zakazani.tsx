@@ -1,5 +1,6 @@
-import React from "react";
-import slika from "../../public/images/radnik.jpg";
+"use client";
+import React, { useEffect, useState } from "react";
+import slika from "../../public/images/dummy.jpg";
 import zakazani from "../../public/dummyZakazani.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,9 +9,40 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { format } from "date-fns";
+import { LuCalendarClock } from "react-icons/lu";
+import Link from "next/link";
+
+const fetchRadnja = async (id: string) => {
+  try {
+    const response = await fetch(`/api/user?id=${id}`, {
+      cache: "no-store",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      return result.user.schedules; // Change to result.user.schedules to access schedules
+    } else {
+      console.error(
+        "Greška prilikom dobijanja schedula:",
+        await response.json()
+      );
+    }
+  } catch (error) {
+    console.error("Greška prilikom slanja forme:", error);
+  }
+  return null;
+};
 
 const Zakazani = () => {
+  const [schedules, setSchedules] = useState<Array<any>>([]);
   const show = false;
+  const { data: session } = useSession();
 
   const proveraDatuma = (param: String) => {
     const datum = new Date();
@@ -33,55 +65,61 @@ const Zakazani = () => {
     } else return "Sledeci mesec";
   };
 
+  useEffect(() => {
+    const loadSchedules = async () => {
+      if (session?.user?.id) {
+        const data = await fetchRadnja(session.user.id);
+        if (data) {
+          setSchedules(data);
+        }
+      }
+    };
+
+    loadSchedules();
+  }, [session?.user?.id]);
   return (
-    <div className="block gap-2">
-      <h1 className="text-xl text-gray-900 font-semibold">
-        <FontAwesomeIcon icon={faAlignRight} /> Zakazani kod vas
+    <div className="block gap-2 mt-0 md:mt-24 mx-4 md:mx-24">
+      <h1 className="text-3xl font-semibold text-gray-800">
+        Your appointments
       </h1>
-      <form className="relative mt-4">
-        <input
-          type="text"
-          className="focus:outline-none px-2 py-1 w-full border-b border-indigo-400 focus:border-indigo-500"
-          placeholder="Pretrazi kupca"
-        />
-        <button className="absolute right-2 top-1 text-indigo-400">
-          <FontAwesomeIcon icon={faSearch} />
-        </button>
-        <button
-          className={`absolute right-8 text-red-400 text-xs top-2 ${
-            show ? "" : "hidden"
-          }`}
-        >
-          <FontAwesomeIcon icon={faClose} />
-        </button>
-      </form>
-      <div className="flex flex-col mt-12 gap-6 w-full">
-        {zakazani.map((zakazan, key) => (
+      <div className="flex py-12 md:flex-row flex-col items-center mt-6">
+        {schedules.map((schedule, key) => (
           <div
             key={key}
-            className="w-full flex gap-4 items-center"
+            className="w-full md:w-72 rounded-xl relative overflow-hidden shadow-md shadow-black/20 flex flex-col"
           >
-            <div className="h-12 w-12 border-[2px] border-indigo-500 overflow-hidden relative rounded-full">
-              <Image src={slika} alt="profilna" fill objectFit="cover" />
-            </div>
-            <div className="block w-40">
-              <h1 className="text-base text-gray-800 ">
-                {zakazan.ime} {zakazan.prezime}
-              </h1>
-              <p className="text-sm font-semibold text-indigo-500">
-                {proveraDatuma(zakazan.datumZakazan)} u {zakazan.vreme}h
-              </p>
-              <h3 className="text-xs text-gray-500">{zakazan.korisnickoIme}</h3>
-            </div>
+            <Link
+              href={`/radnja/${schedule.radnjaId}`}
+              className=" w-full h-40 overflow-hidden relative"
+            >
+              <Image
+                className="hover:scale-110 transition-all duration-500 ease-in-out"
+                src={slika}
+                alt="profilna"
+                fill
+                objectFit="cover"
+              />
+              <h3 className="absolute bottom-2 font-extralight z-10 left-2 text-lg text-white flex items-center gap-2">
+                <LuCalendarClock className="-mt-1" />{" "}
+                {format(new Date(schedule.time), "hh:mm aa dd.MMM")}
+              </h3>
+              <button className="absolute bottom-2 z-10 right-2 text-white px-2 text-sm py-1 bg-red-600 rounded-lg">
+                Cancel
+              </button>
+              <span className="pointer-events-none bg-gradient-to-t from-black/50 to-transparent absolute top-0 left-0 right-0 bottom-0" />
+            </Link>
+            <div className="block p-4 bg-gray-200">
+              <div className="flex items-center justify-between">
+                <h1 className="text-xl font-semibold text-gray-900">
+                  Sisanje na kratko
+                </h1>
+                <p className="text-base text-gray-500">900 RSD</p>
+              </div>
 
-            <button className="text-white bg-gray-800 px-2 py-2 text-xs rounded-md">
-              Pregled
-            </button>
+              <h2 className="text-gray-600">with {schedule.workerId}</h2>
+            </div>
           </div>
         ))}
-        <button className="text-indigo-500 text-center text-sm">
-          Vidi više
-        </button>
       </div>
     </div>
   );
